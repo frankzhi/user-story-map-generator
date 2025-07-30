@@ -30,8 +30,14 @@ export class GeminiService {
   private apiUrl: string;
 
   constructor() {
-    this.apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
-    this.apiUrl = import.meta.env.VITE_GEMINI_API_URL || 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+    try {
+      this.apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+      this.apiUrl = import.meta.env.VITE_GEMINI_API_URL || 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+    } catch (error) {
+      console.warn('Failed to initialize Gemini service:', error);
+      this.apiKey = '';
+      this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+    }
   }
 
   async generateStoryMap(productDescription: string): Promise<StoryMapYAML> {
@@ -174,6 +180,11 @@ Return ONLY the JSON object, no additional text or explanations.`;
   }
 
   isConfigured(): boolean {
-    return !!this.apiKey;
+    try {
+      return !!this.apiKey;
+    } catch (error) {
+      console.warn('Error checking Gemini configuration:', error);
+      return false;
+    }
   }
 } 

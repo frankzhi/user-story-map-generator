@@ -18,8 +18,14 @@ export class DeepSeekService {
   private apiUrl: string;
 
   constructor() {
-    this.apiKey = import.meta.env.VITE_DEEPSEEK_API_KEY || '';
-    this.apiUrl = import.meta.env.VITE_DEEPSEEK_API_URL || 'https://api.deepseek.com/v1/chat/completions';
+    try {
+      this.apiKey = import.meta.env.VITE_DEEPSEEK_API_KEY || '';
+      this.apiUrl = import.meta.env.VITE_DEEPSEEK_API_URL || 'https://api.deepseek.com/v1/chat/completions';
+    } catch (error) {
+      console.warn('Failed to initialize DeepSeek service:', error);
+      this.apiKey = '';
+      this.apiUrl = 'https://api.deepseek.com/v1/chat/completions';
+    }
   }
 
   async generateStoryMap(productDescription: string): Promise<StoryMapYAML> {
@@ -156,6 +162,11 @@ Return ONLY the JSON object, no additional text or explanations.`;
   }
 
   isConfigured(): boolean {
-    return !!this.apiKey;
+    try {
+      return !!this.apiKey;
+    } catch (error) {
+      console.warn('Error checking DeepSeek configuration:', error);
+      return false;
+    }
   }
 } 
