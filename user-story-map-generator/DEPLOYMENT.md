@@ -23,56 +23,57 @@ This guide will help you deploy your User Story Map Generator to the web.
 3. Click "Create API Key"
 4. Copy the API key
 
-## 🚀 Deploy to Vercel (Recommended)
+## 🎯 **Manual Deployment Steps:**
 
-### Step 1: Push to GitHub
+### **Step 1: Navigate to your project directory**
+```bash
+<code_block_to_apply_changes_from>
+```
 
-1. **Initialize Git** (if not already done):
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
+### **Step 2: Load NVM and Node.js**
+```bash
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
 
-2. **Create GitHub Repository**:
-   - Go to [GitHub](https://github.com)
-   - Click "New repository"
-   - Name it `user-story-map-generator`
-   - Make it public
-   - Don't initialize with README (we already have one)
+### **Step 3: Install Vercel CLI**
+```bash
+npm install -g vercel
+```
 
-3. **Push to GitHub**:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/user-story-map-generator.git
-   git branch -M main
-   git push -u origin main
-   ```
+### **Step 4: Deploy to Vercel**
+```bash
+vercel --prod
+```
 
-### Step 2: Deploy to Vercel
+## 🔍 **Alternative: Check Vercel Dashboard**
 
-1. **Go to Vercel**:
-   - Visit [Vercel](https://vercel.com)
-   - Sign up with your GitHub account
+Since manual deployment might be complex, let's focus on the Vercel dashboard approach:
 
-2. **Import Project**:
-   - Click "New Project"
-   - Import your GitHub repository
-   - Vercel will automatically detect it's a Vite project
+### **Step 1: Go to Vercel Dashboard**
+1. Visit [vercel.com/dashboard](https://vercel.com/dashboard)
+2. Find your project `user-story-map-generator`
 
-3. **Configure Environment Variables**:
-   - In the project settings, go to "Environment Variables"
-   - Add the following variables:
-     ```
-     VITE_DEEPSEEK_API_KEY=your_deepseek_api_key_here
-     VITE_DEEPSEEK_API_URL=https://api.deepseek.com/v1/chat/completions
-     VITE_GEMINI_API_KEY=your_gemini_api_key_here
-     VITE_GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
-     ```
+### **Step 2: Check Project Settings**
+1. Click on your project
+2. Go to **Settings** tab
+3. Check **Build & Development Settings**:
+   - **Framework Preset**: Should be `Vite` or `Other`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
 
-4. **Deploy**:
-   - Click "Deploy"
-   - Vercel will build and deploy your application
-   - You'll get a URL like: `https://your-project.vercel.app`
+### **Step 3: Redeploy**
+1. Go to **Deployments** tab
+2. Click **Redeploy** on the latest deployment
+3. Or click **Deploy** to trigger a new deployment
+
+##  **Quick Fix: Try a Different Approach**
+
+Let me create a simpler configuration that should work:
+
+```
+cd /Users/franktianmuzhi/user-story-map-generator
+```
 
 ## 🌐 Deploy to Netlify
 
