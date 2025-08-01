@@ -80,15 +80,78 @@ The response should be a valid JSON object with the following structure:
   ]
 }
 
-Guidelines:
-- Create 3-5 epics that cover the main functional areas
-- Each epic should have 2-4 features
-- Each feature should have 3-6 tasks
-- Tasks should be specific, actionable, and testable
-- Priority should be based on business value and user impact
-- Effort should be realistic (1-5 days per task)
-- Acceptance criteria should be clear and measurable
-- Focus on user value and business outcomes
+IMPORTANT GUIDELINES FOR STORY GENERATION:
+
+1. USER STORIES (Tasks):
+   - Focus on user value and business outcomes
+   - Write from the user's perspective: "As a [user], I want [goal] so that [benefit]"
+   - Make them specific, actionable, and testable
+   - Include clear acceptance criteria
+
+2. ENABLING STORIES (Supporting Requirements):
+   - These are NOT just rephrased user stories
+   - Analyze the product description and identify specific technical infrastructure needs
+   - Generate enabling stories that directly support the user stories you create
+   - Consider the following categories based on the product type:
+     
+     FOR WEB APPLICATIONS:
+     * Authentication and authorization systems
+     * Database design and optimization
+     * API development and security
+     * Frontend framework setup
+     * CI/CD pipeline configuration
+     * Monitoring and logging systems
+     * Performance optimization (caching, CDN)
+     * Security measures (SSL, rate limiting, input validation)
+     
+     FOR MOBILE APPLICATIONS:
+     * Mobile app development framework setup
+     * Backend API development
+     * Push notification infrastructure
+     * Offline data synchronization
+     * App store deployment preparation
+     * Device compatibility testing framework
+     * Performance monitoring for mobile
+     
+     FOR ENTERPRISE APPLICATIONS:
+     * Role-based access control (RBAC)
+     * Audit logging and compliance
+     * Data backup and disaster recovery
+     * Integration with existing enterprise systems
+     * Scalability and load balancing
+     * Security compliance (GDPR, SOC2, etc.)
+     
+     FOR E-COMMERCE APPLICATIONS:
+     * Payment gateway integration
+     * Inventory management system
+     * Order processing workflow
+     * Customer data management
+     * Shipping and logistics integration
+     * Fraud detection systems
+     
+     FOR SOCIAL/MEDIA APPLICATIONS:
+     * Content moderation systems
+     * Real-time communication infrastructure
+     * Media storage and CDN setup
+     * User privacy and data protection
+     * Scalable content delivery
+     * Social features (likes, comments, sharing)
+
+3. EPIC STRUCTURE:
+   - Create 3-5 epics that cover main functional areas
+   - ALWAYS include at least one "Infrastructure & Technical" epic for enabling stories
+   - Each epic should have 2-4 features
+   - Each feature should have 3-6 tasks
+
+4. PRIORITY AND EFFORT:
+   - Priority based on business value and user impact
+   - Effort should be realistic (1-5 days per task)
+   - Enabling stories often have medium priority but are critical for delivery
+
+5. ACCEPTANCE CRITERIA:
+   - For user stories: Focus on user behavior and outcomes
+   - For enabling stories: Focus on technical requirements, performance metrics, and system capabilities
+   - Make acceptance criteria specific and measurable
 
 Generate a user story map for this product: ${productDescription}
 
